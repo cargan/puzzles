@@ -3,17 +3,17 @@
 //AMAZON challange
 //https://amazon.interviewstreet.com/challenges/dashboard/#problem/4fd653336df28
 
-fscanf(STDIN, "%d\n", $number);
-$input = [];
-while ($number--) {
-    fscanf(STDIN, "%d\n", $it);
-    $input[] = $it;
-}
-
+// fscanf(STDIN, "%d\n", $number);
+// $input = [];
+// while ($number--) {
+//     fscanf(STDIN, "%d\n", $it);
+//     $input[] = $it;
+// }
+$input = [162, 163];
 function getDividers($number) {
-    if (!($number % 2)) {
-        return array(2);
-    }
+    // if (!($number % 2)) {
+    //     return array(2);
+    // }
     $div = [];
     for ($i=3;$i<=$number;$i++) {
         if (!($number % $i)) {
@@ -27,7 +27,6 @@ function getDividers($number) {
 
 function getDivider($n, $fibo) {
     $dividers = getDividers($n);
-    print_r($dividers);
     $tmp = [];
     foreach ($dividers as $divider) {
         foreach ($fibo as $f) {

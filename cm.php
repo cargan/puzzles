@@ -1,10 +1,11 @@
 <?php
-
-
-// $inputs = [40, 80, 110, 210, 340, 230, 170, 520, 670];
+//Cache mashine implementation
+//can be extended to provide smallest nominals and etc;
+//
+//Problam: cache mashine gives 200, 50 and 20 dollar amount notes; please find amount of notes for the amount;
 //
 
-$input = 1210;
+$input = 210;
 $nominals = array(
     200, 50, 20
 );
@@ -18,7 +19,6 @@ foreach ($nominals as $nominal) {
     $gogo[$nominal] = ($input - ($input % $nominal)) / $nominal;
 }
 
-print_r($gogo);
 $result = [];
 for ($x=0;$x<=$gogo[200];$x++) {
     for ($y=0;$y<=$gogo[50];$y++) {
@@ -33,13 +33,14 @@ for ($x=0;$x<=$gogo[200];$x++) {
                 $data['amount'] = $amount;
                 $result[] = $data;
                 // break;
-
-// print_r($result);
-// exit;
             }
         }
     }
 }
 
+//bigest
+if (count($result)) {
+    print_r(end($result))
+}
 print_r($result);
 exit;
