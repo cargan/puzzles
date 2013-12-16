@@ -1,5 +1,8 @@
 <?php
 
+//AMAZON challange
+//https://amazon.interviewstreet.com/challenges/dashboard/#problem/4fd653336df28
+
 fscanf(STDIN, "%d\n", $number);
 $input = [];
 while ($number--) {
@@ -24,11 +27,7 @@ function getDividers($number) {
 
 function getDivider($n, $fibo) {
     $dividers = getDividers($n);
-
-    if (count($dividers) === 1) {
-        return array($n, reset($dividers));
-    }
-
+    print_r($dividers);
     $tmp = [];
     foreach ($dividers as $divider) {
         foreach ($fibo as $f) {
@@ -38,25 +37,19 @@ function getDivider($n, $fibo) {
         }
     }
 
-    asort($tmp);
+    if (!$tmp) {
+        return array();
+    }
+
+    ksort($tmp);
     $key = key($tmp);
     $value = min($tmp[$key]);
 
     return array($key, $value);
 }
 
-
 $fibo = [0, 1];
-$fibo = buildFibbonace(max($input), $fibo);
-
-$res = '';
-foreach ($input as $n) {
-    $data = getDivider($n, $fibo);
-    $res .= "{$data[0]} {$data[1]} \n";
-}
-
-fwrite(STDOUT, $res);
-
+$fibo = buildFibbonace(pow(2, 18), $fibo);
 
 function buildFibbonace($n, $fibo) {
     while (true) {
@@ -69,3 +62,14 @@ function buildFibbonace($n, $fibo) {
     }
     return $fibo;
 }
+
+
+$res = '';
+foreach ($input as $n) {
+    $data = getDivider($n, $fibo);
+    if ($data) {
+        $res .= "{$data[0]} {$data[1]} \n";
+    }
+}
+
+fwrite(STDOUT, $res);
